@@ -2,7 +2,7 @@ from .IDC import IDC
 from sklearn.cluster import DBSCAN
 import numpy as np
 from .utils import attr_align_from_indices
-class ED_SAC(object):
+class ED_SDC(object):
     def __init__(self, eps, k, m, dThreshold, features, userToEmb, keyToAttr, attr_names):
         self.eps = eps
         self.k = k

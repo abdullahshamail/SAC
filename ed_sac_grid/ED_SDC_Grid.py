@@ -4,7 +4,7 @@ import numpy as np
 
 from .utils import attr_align_from_indices, dbscan_labels_grid_onn
 
-class ED_SAC_Grid:
+class ED_SDC_Grid:
 
     def __init__(self, eps, k, m, d_thresh, features, userToEmb, keyToAttr, attr_names):
         self.eps = float(eps)

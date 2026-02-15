@@ -3,8 +3,8 @@ import time
 import pandas as pd
 
 from brute_force import BruteForce
-from ed_sac import ED_SAC
-from ed_sac_grid import ED_SAC_Grid
+from ed_SDC import ED_SDC
+from ed_SDC_grid import ED_SDC_Grid
 
 
 def makeSynethticData():
@@ -34,18 +34,18 @@ def main():
     X, userToEmb, features, keyToAttr, Tframes, Nobj, epsilon, tempK, tempM = makeSynethticData()
     dthreshold = 0.3
     print(f"Running experiments with eps={epsilon}, k={tempK}, m={tempM}, d_div={dthreshold}...")
-    alg3 = ED_SAC_Grid(eps=epsilon, k=tempK, m=tempM, d_thresh=dthreshold, features=features, userToEmb=userToEmb, keyToAttr=keyToAttr, attr_names=("demographics","sports","color"))
+    alg3 = ED_SDC_Grid(eps=epsilon, k=tempK, m=tempM, d_thresh=dthreshold, features=features, userToEmb=userToEmb, keyToAttr=keyToAttr, attr_names=("demographics","sports","color"))
 
     t0 = time.perf_counter(); conv3 = alg3.fit_predict(X); t1 = time.perf_counter()
 
-    numConv3, timeTaken3 = pretty_print_convoys(conv3, title="ED-SAC-Grid", timeTaken=f"{t1-t0:.2f}s", T = Tframes, n=Nobj, eps=epsilon, div_val=dthreshold, k = tempK)
+    numConv3, timeTaken3 = pretty_print_convoys(conv3, title="ED-SDC-Grid", timeTaken=f"{t1-t0:.2f}s", T = Tframes, n=Nobj, eps=epsilon, div_val=dthreshold, k = tempK)
 
 
-    alg2 = ED_SAC(eps=epsilon, k=tempK, m=tempM, dThreshold=dthreshold, features=features, userToEmb=userToEmb, keyToAttr=keyToAttr, attr_names=("demographics","sports","color"))
+    alg2 = ED_SDC(eps=epsilon, k=tempK, m=tempM, dThreshold=dthreshold, features=features, userToEmb=userToEmb, keyToAttr=keyToAttr, attr_names=("demographics","sports","color"))
 
     t0 = time.perf_counter(); conv2 = alg2.fit_predict(X); t1 = time.perf_counter()
 
-    numConv2, timeTaken2 = pretty_print_convoys(conv2, title="Ed-SAC", timeTaken=f"{t1-t0:.2f}s", T = Tframes, n=Nobj, eps=epsilon, div_val=dthreshold, k = tempK)
+    numConv2, timeTaken2 = pretty_print_convoys(conv2, title="Ed-SDC", timeTaken=f"{t1-t0:.2f}s", T = Tframes, n=Nobj, eps=epsilon, div_val=dthreshold, k = tempK)
 
 
     alg1 = BruteForce(eps=epsilon, k=tempK, m=tempM, dThreshold=dthreshold, features=features, userToEmb=userToEmb, keyToAttr=keyToAttr)
@@ -60,11 +60,11 @@ def main():
     'k': tempK,
     'd_div': dthreshold,
     'time_BF': timeTaken1,
-    'time_ED_SAC': timeTaken2,
-    'time_ED_SAC_GRID': timeTaken3,
-    'num_SACs_BF': numConv1,
-    'num_SACs_ED_SAC': numConv2,
-    'num_SACs_ED_SAC_GRID': numConv3
+    'time_ED_SDC': timeTaken2,
+    'time_ED_SDC_GRID': timeTaken3,
+    'num_SDCs_BF': numConv1,
+    'num_SDCs_ED_SDC': numConv2,
+    'num_SDCs_ED_SDC_GRID': numConv3
 })
     runTimes = pd.DataFrame(data_rows)
 

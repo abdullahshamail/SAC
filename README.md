@@ -1,4 +1,4 @@
-# SAC: Semantic Aware Convoys
+# SDC: Semantically Diverse Convoys
 
 **A Python framework for mining trajectory patterns with semantic and spatiotemporal constraints.**
 
@@ -8,9 +8,9 @@
 
 ## 📌 Overview
 
-**SAC** (Semantic Aware Convoys) is a research code repository designed to detect moving groups of objects (convoys) that satisfy both **spatial proximity** and **semantic diversity** over time.
+**SDC** (Semantically Diverse Convoys) is a research code repository designed to detect moving groups of objects (convoys) that satisfy both **spatial proximity** and **semantic diversity** over time.
 
-This repository implements algorithms to solve the *Semantic-Aware Convoy* problem, providing both exact baseline implementations and optimized approaches using grid-based indexing and incremental updates.
+This repository implements algorithms to solve the *Semantically Diverse Convoy* problem, providing both exact baseline implementations and optimized approaches using grid-based indexing and incremental updates.
 
 The core algorithms address the challenge of discovering **Relaxed Moving Clusters** (RMCs) where:
 1.  **Spatial Constraint:** Objects must be density-connected (e.g., via DBSCAN-like density) at each timestamp.
@@ -25,9 +25,9 @@ The codebase is organized into modules representing different algorithmic approa
 
 ├── brute_force/          # Baseline implementation
 │   └── ...               # Exact but computationally expensive method (O(N^2))
-├── ed_sac/               # Efficient Detection of SAC
+├── ed_SDC/               # Efficient Detection of SDC
 │   └── ...               # Incremental algorithm using incremental diversity
-├── ed_sac_grid/          # Grid-Based SAC (Optimized)
+├── ed_SDC_grid/          # Grid-Based SDC (Optimized)
 │   └── ...               # Optimized algorithm using spatial grid indexing for faster neighbor search
 ├── runExperiments.py     # Main entry point for running experiments (currently written for synthethic data)
 ├── utils.py              # Helper functions for data loading, preprocessing, and logging
@@ -48,8 +48,8 @@ This project relies on standard Python scientific computing libraries. We recomm
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/abdullahshamail/SAC.git](https://github.com/abdullahshamail/SAC.git)
-    cd SAC
+    git clone [https://github.com/abdullahshamail/SDC.git](https://github.com/abdullahshamail/SDC.git)
+    cd SDC
     ```
 
 2.  **Set up a virtual environment (Recommended):**

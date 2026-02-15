@@ -3,8 +3,8 @@ import time
 import pandas as pd
 
 from brute_force import BruteForce
-from ed_SDC import ED_SDC
-from ed_SDC_grid import ED_SDC_Grid
+from ed_sdc import ED_SDC
+from ed_sdc_grid import ED_SDC_Grid
 
 
 def makeSynethticData():
